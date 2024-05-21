@@ -7,3 +7,4 @@
 - Prisma orm mysql
 - NextAuth
 - react-hook-form
+- zod
