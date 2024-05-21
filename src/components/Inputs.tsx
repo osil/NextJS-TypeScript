@@ -10,22 +10,20 @@ interface IInputsProps {
 const Inputs: React.FunctionComponent<IInputsProps> = (props) => {
   const { name, label, type, placeholder } = props;
   return (
-    <div className=" m-2">
+    <div className="max-w-sm m-4">
       <label
         htmlFor={name}
-        className="block text-sm font-medium leading-5 text-gray-900"
+        className="block text-sm font-medium mb-2 dark:text-white"
       >
         {label}
       </label>
-      <div className="relative mt-2 rounded-md shadow-sm">
-        <input
-          type={type}
-          name={name}
-          id={name}
-          className="block w-auto rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          placeholder={placeholder}
-        />
-      </div>
+      <input
+        type={type}
+        id={name}
+        className="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+        placeholder={placeholder}
+        aria-describedby="hs-input-helper-text"
+      />
     </div>
   );
 };
