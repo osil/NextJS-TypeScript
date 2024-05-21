@@ -6,3 +6,4 @@
 - Redux tooltik
 - Prisma orm mysql
 - NextAuth
+- react-hook-form
