@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id
+  userId            Int
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  User              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId], map: "Account_userId_fkey")
+}
+
+model User {
+  id            Int       @id @default(autoincrement())
+  name          String?
+  email         String    @unique
+  password      String?
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime
+  role          String    @default("member")
+  emailVerified DateTime?
+  Account       Account[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model dataset {
+  datasetid     Int         @id @default(autoincrement())
+  datasetname   String?     @db.VarChar(10)
+  datasetstatus String?     @default("1") @db.VarChar(1)
+  staffsex      staffsex[]
+  stafftype     stafftype[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model staffsex {
+  staffsexid    Int       @id @default(autoincrement())
+  staffsexkey   String?   @db.VarChar(1)
+  staffsexname  String?   @db.VarChar(10)
+  staffsextotal Int?
+  datasetid     Int?
+  createtime    DateTime? @default(now()) @db.DateTime(0)
+  dataset       dataset?  @relation(fields: [datasetid], references: [datasetid], onDelete: Cascade, map: "Staffsex_datasetid_fkey")
+
+  @@index([datasetid], map: "Staffsex_datasetid_fkey")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model stafftype {
+  stafftypeid        Int       @id @default(autoincrement())
+  stafftype          Int?
+  stafftypename      String?   @db.VarChar(255)
+  stafftypevichakarn Int?
+  stafftypesupport   Int?
+  stafftypeexecc     Int?
+  stafftypecountall  Int?
+  stafftypeper       Float?
+  datasetid          Int?
+  createtime         DateTime? @default(now()) @db.DateTime(0)
+  dataset            dataset?  @relation(fields: [datasetid], references: [datasetid], onDelete: Cascade, map: "Stafftype_datasetid_fkey")
+
+  @@index([datasetid], map: "Stafftype_datasetid_fkey")
+}
