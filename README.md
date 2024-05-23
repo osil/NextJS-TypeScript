@@ -9,3 +9,4 @@
 - react-hook-form
 - zod
 - @hookform/resolvers
+- @material-tailwind/react
