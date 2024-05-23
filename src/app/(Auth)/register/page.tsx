@@ -51,7 +51,7 @@ const Register = (props: Props) => {
           placeholder="fullname"
           label="fullname"
           register={register}
-          error={errors?.fullname?.message}
+          errorMessage={errors?.fullname?.message}
           disable={isSubmitting}
         />
         <Inputs
@@ -60,7 +60,7 @@ const Register = (props: Props) => {
           placeholder="email"
           label="email"
           register={register}
-          error={errors?.email?.message}
+          errorMessage={errors?.email?.message}
           disable={isSubmitting}
         />
         <Inputs
@@ -69,7 +69,7 @@ const Register = (props: Props) => {
           placeholder="*******"
           label="Password"
           register={register}
-          error={errors?.password?.message}
+          errorMessage={errors?.password?.message}
           disable={isSubmitting}
         />
         <Inputs
@@ -78,7 +78,7 @@ const Register = (props: Props) => {
           placeholder="*******"
           label="Confirm Password"
           register={register}
-          error={errors?.confirmPassword?.message}
+          errorMessage={errors?.confirmPassword?.message}
           disable={isSubmitting}
         />
         <Button type="submit">Button</Button>

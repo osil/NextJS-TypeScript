@@ -1,5 +1,7 @@
 //tsrstc
-import * as React from "react";
+
+import { Input, Typography } from "@material-tailwind/react";
+import { error } from "console";
 
 interface IInputsProps {
   name: string;
@@ -7,34 +9,44 @@ interface IInputsProps {
   type: string;
   placeholder: string;
   register: any;
-  error: any;
+  errorMessage: any;
   disable: any;
 }
 
 const Inputs: React.FunctionComponent<IInputsProps> = (props) => {
-  const { name, label, type, placeholder, register, error, disable } = props;
+  const { name, label, type, placeholder, register, errorMessage, disable } =
+    props;
   return (
-    <div className="max-w-sm m-4">
-      <label
-        htmlFor={name}
-        className="block text-sm font-medium mb-2 dark:text-white"
-      >
-        {label}
-      </label>
-      <input
+    <div className="w-[32rem] m-5">
+      <Input
         type={type}
-        id={name}
-        className="py-3 px-4 block w-full border-0 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+        label={label}
         placeholder={placeholder}
-        aria-describedby="hs-input-helper-text"
+        name={name}
+        error={errorMessage}
         {...register(name)}
       />
-      <p
-        className="mt-2 text-sm text-red-500 dark:text-neutral-500"
-        id="hs-input-helper-text"
-      >
-        {error}
-      </p>
+      {errorMessage && (
+        <Typography
+          variant="small"
+          color="red"
+          className="mt-2 flex items-center gap-1 font-normal"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="-mt-px h-4 w-4"
+          >
+            <path
+              fillRule="evenodd"
+              d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
+              clipRule="evenodd"
+            />
+          </svg>
+          {errorMessage}
+        </Typography>
+      )}
     </div>
   );
 };
