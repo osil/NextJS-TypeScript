@@ -7,18 +7,6 @@ const Login = (props: Props) => {
   return (
     <>
       <div>Login</div>
-      <Inputs
-        name="username"
-        type="text"
-        placeholder="Username"
-        label="Username"
-      />
-      <Inputs
-        name="password"
-        type="password"
-        placeholder="*******"
-        label="Password"
-      />
     </>
   );
 };

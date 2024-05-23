@@ -1,7 +1,6 @@
 //tsrstc
 
 import { Input, Typography } from "@material-tailwind/react";
-import { error } from "console";
 
 interface IInputsProps {
   name: string;

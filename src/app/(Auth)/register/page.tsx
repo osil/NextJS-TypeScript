@@ -81,7 +81,9 @@ const Register = (props: Props) => {
           errorMessage={errors?.confirmPassword?.message}
           disable={isSubmitting}
         />
-        <Button type="submit">Button</Button>
+        <Button type="submit" variant="outlined" color="blue" className="m-5">
+          Button
+        </Button>
       </form>
     </>
   );

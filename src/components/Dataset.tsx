@@ -14,8 +14,8 @@ function Dataset() {
   return (
     <>
       <div>Dataset</div>
-      {dataSets.map((dataset: any) => (
-        <p key={dataset.id}> {dataset.datasetname}</p>
+      {dataSets.map((dataset: any, index: number) => (
+        <p key={index}> {dataset.datasetname}</p>
       ))}
     </>
   );
