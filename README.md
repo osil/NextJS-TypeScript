@@ -10,3 +10,4 @@
 - zod
 - @hookform/resolvers
 - @material-tailwind/react
+- npm i zxcvbn

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import { ThemeProvider } from "./ThemeProvider";
+import { NavbarWithMegaMenu } from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,10 @@ export default function RootLayout({
     <html lang="en">
       <StoreProvider>
         <ThemeProvider>
-          <body className={inter.className}>{children}</body>
+          <body className={inter.className}>
+            <NavbarWithMegaMenu />
+            {children}
+          </body>
         </ThemeProvider>
       </StoreProvider>
     </html>

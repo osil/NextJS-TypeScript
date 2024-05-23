@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@material-tailwind/react";
+import { PlusCircleIcon } from "@heroicons/react/24/outline";
 
 import Inputs from "@/components/Inputs";
 
@@ -42,7 +43,7 @@ const Register = (props: Props) => {
   const onSubmit: SubmitHandler<FormSchemaType> = (data) => console.log(data);
 
   return (
-    <>
+    <div className="container">
       <div>Register</div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Inputs
@@ -81,11 +82,18 @@ const Register = (props: Props) => {
           errorMessage={errors?.confirmPassword?.message}
           disable={isSubmitting}
         />
-        <Button type="submit" variant="outlined" color="blue" className="m-5">
+
+        <Button
+          type="submit"
+          variant="outlined"
+          color="blue"
+          className="flex items-center gap-2 ml-5 mt-3"
+        >
+          <PlusCircleIcon className="h-4 w-4" />
           Button
         </Button>
       </form>
-    </>
+    </div>
   );
 };
 
