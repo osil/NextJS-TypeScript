@@ -9,4 +9,3 @@
 - react-hook-form
 - zod
 - @hookform/resolvers
-- Install @material-tailwind/react
