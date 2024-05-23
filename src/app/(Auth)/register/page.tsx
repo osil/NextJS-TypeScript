@@ -3,6 +3,7 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "@material-tailwind/react";
 
 import Inputs from "@/components/Inputs";
 
@@ -80,7 +81,7 @@ const Register = (props: Props) => {
           error={errors?.confirmPassword?.message}
           disable={isSubmitting}
         />
-        <button>Submit</button>
+        <Button type="submit">Button</Button>
       </form>
     </>
   );
