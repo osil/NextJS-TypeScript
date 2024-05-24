@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,7 +9,7 @@ import Inputs from "@/components/Inputs";
 
 const FormSchema = z
   .object({
-    fullname: z.string().min(2, "กรุณาระบุชื่อผู้ใช้"),
+    name: z.string().min(2, "กรุณาระบุชื่อผู้ใช้"),
     email: z.string().email("กรุณากรอกอีเมล"),
     password: z
       .string()
@@ -43,16 +42,16 @@ const Register = (props: Props) => {
   const onSubmit: SubmitHandler<FormSchemaType> = (data) => console.log(data);
 
   return (
-    <div className="container">
+    <div>
       <div>Register</div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Inputs
-          name="fullname"
+          name="name"
           type="text"
           placeholder="fullname"
-          label="fullname"
+          label="name"
           register={register}
-          errorMessage={errors?.fullname?.message}
+          errorMessage={errors?.name?.message}
           disable={isSubmitting}
         />
         <Inputs
@@ -66,7 +65,7 @@ const Register = (props: Props) => {
         />
         <Inputs
           name="password"
-          type="password"
+          type="text"
           placeholder="*******"
           label="Password"
           register={register}

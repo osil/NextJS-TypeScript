@@ -208,7 +208,7 @@ export function NavbarWithMegaMenu() {
   }, []);
 
   return (
-    <Navbar className="mx-auto max-w-full px-4 py-2 rounded-none sticky top-0 z-10 mb-4">
+    <Navbar className="mx-auto max-w-full px-4 py-2 rounded-none sticky top-0 z-10">
       <div className="flex items-center justify-between text-blue-gray-900 ">
         <Typography
           as="a"

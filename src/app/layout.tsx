@@ -23,7 +23,7 @@ export default function RootLayout({
         <ThemeProvider>
           <body className={inter.className}>
             <NavbarWithMegaMenu />
-            {children}
+            <div className="container w-auto mx-auto mt-5">{children}</div>
           </body>
         </ThemeProvider>
       </StoreProvider>
