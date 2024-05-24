@@ -4,8 +4,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@material-tailwind/react";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/navigation";
 
 import Inputs from "@/components/Inputs";
+import axios from "axios";
 
 const FormSchema = z
   .object({
@@ -31,6 +33,7 @@ type FormSchemaType = z.infer<typeof FormSchema>;
 type Props = {};
 
 const Register = (props: Props) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -39,8 +42,20 @@ const Register = (props: Props) => {
   } = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
   });
-  const onSubmit: SubmitHandler<FormSchemaType> = (data) => console.log(data);
-
+  const onSubmit: SubmitHandler<FormSchemaType> = async (data) => {
+    try {
+      const { name, email, password } = data;
+      const createUser = await axios.post("api/auth/signup", {
+        name,
+        email,
+        password,
+      });
+      alert(`Create User Success  ${createUser.data.user.name}`);
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <div>Register</div>

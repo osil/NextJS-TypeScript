@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
-type Props = {};
+
 export async function POST(req: Request) {
   try {
     const { name, email, password } = await req.json();
@@ -19,6 +19,6 @@ export async function POST(req: Request) {
 
     return Response.json({ message: "User created", user });
   } catch (error) {
-    return Response.json({ error: "User could not be created" });
+    return Response.json({ error: error });
   }
 }
